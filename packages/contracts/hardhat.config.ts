@@ -48,7 +48,7 @@ const getCommonNetworkConfig = (networkName: ESupportedChains, chainId: number, 
   accounts: {
     mnemonic: mnemonic || process.env.MNEMONIC || TEST_MNEMONIC,
     path: "m/44'/60'/0'/0",
-    initialIndex: 0,
+    initialIndex: 2,
     count: 20,
   },
 });
