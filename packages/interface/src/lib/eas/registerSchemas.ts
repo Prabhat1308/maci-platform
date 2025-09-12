@@ -19,7 +19,22 @@ const approvalSchema = "bytes32 type, bytes32 round";
 
 const schemas = [{ name: "Voter Approval", schema: approvalSchema }];
 
-const provider = new ethers.AlchemyProvider(config.network.name, process.env.NEXT_PUBLIC_ALCHEMY_ID);
+// Map app chain names to Alchemy network identifiers
+const ALCHEMY_NETWORKS: Record<string, string> = {
+  ethereum: "mainnet",
+  optimism: "optimism",
+  optimismSepolia: "optimism-sepolia",
+  arbitrum: "arbitrum",
+  linea: "linea",
+  sepolia: "sepolia",
+  base: "base",
+  baseSepolia: "base-sepolia",
+};
+
+const alchemyNetwork =
+  ALCHEMY_NETWORKS[(process.env.NEXT_PUBLIC_CHAIN_NAME as string) || "optimismSepolia"] || "optimism-sepolia";
+
+const provider = new ethers.AlchemyProvider(alchemyNetwork, process.env.NEXT_PUBLIC_ALCHEMY_ID);
 
 const wallet = new ethers.Wallet(process.env.WALLET_PRIVATE_KEY!).connect(provider);
 
@@ -29,17 +44,18 @@ schemaRegistry.connect(wallet as unknown as TransactionSigner);
 export async function registerSchemas(): Promise<{ name: string; uid: string }[]> {
   return Promise.all(
     schemas.map(async ({ name, schema }) => {
-      const exists = await schemaRegistry
-        .getSchema({
-          uid: SchemaRegistry.getSchemaUID(schema, ZERO_ADDRESS, true),
-        })
-        .catch(console.error);
+      const uid = SchemaRegistry.getSchemaUID(schema, ZERO_ADDRESS, true);
+
+      const exists = await schemaRegistry.getSchema({ uid }).catch(() => undefined);
 
       if (exists) {
-        return { name, ...exists };
+        return { name, uid };
       }
 
-      return schemaRegistry.register({ schema, revocable: true }).then(async (tx) => ({ name, uid: await tx.wait() }));
+      // Explicitly pass resolverAddress = ZERO_ADDRESS for deterministic UID
+      const tx = await schemaRegistry.register({ schema, resolverAddress: ZERO_ADDRESS, revocable: true });
+      await tx.wait();
+      return { name, uid };
     }),
   ).then((registered) => {
     registered.forEach((schema) => {

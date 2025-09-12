@@ -1,0 +1,45 @@
+{
+    "maci": "0x8F661c0cdB1b6ACAa2172a56ad878D4B19386757",
+    "pollId": "0",
+    "network": "optimism_sepolia",
+    "chainId": "11155420",
+    "isQuadratic": false,
+    "tallyAddress": "0x8330B04AbD43Be1044c7E4073160Dd7fDda79CB8",
+    "newTallyCommitment": "0x2b8adcfe6dc6437f1df069b45b2f83db7190a445b1c04c6287b2db7bbfce07ae",
+    "results": {
+        "tally": [
+            "0",
+            "33",
+            "33",
+            "33",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "salt": "0x2a5750769e1af9138df6200cd4e99005d48d084bdb6872a570c8439501b7fd89",
+        "commitment": "0x18d0098427859ceb2a960b3f249cdee4e569843409a0600f34a3705fb5932237"
+    },
+    "totalSpentVoiceCredits": {
+        "spent": "99",
+        "salt": "0x12b035680efc7bc8a1d024bdc3062bdbc6c167bc646e49258a81ccac0ab24518",
+        "commitment": "0xb8453b55bb002aa6e2a415a1476f187a1086a4aad19bb2a898569416a7ff0f6"
+    }
+}
