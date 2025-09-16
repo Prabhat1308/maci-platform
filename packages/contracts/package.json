@@ -55,7 +55,9 @@
     "submitOnChain:localhost": "pnpm run submitOnChain",
     "submitOnChain:optimism-sepolia": "pnpm run submitOnChain --network optimism_sepolia",
     "upload-round-metadata": "ts-node ./scripts/uploadRoundMetadata.ts",
-    "deploy-mock-erc20": "TS_NODE_TRANSPILE_ONLY=1 ts-node ./scripts/deployMockERC20.ts --network optimism_sepolia"
+    "deploy-mock-erc20": "TS_NODE_TRANSPILE_ONLY=1 ts-node ./scripts/deployMockERC20.ts --network optimism_sepolia",
+    "claim-one": "hardhat claimOne --tally-file ./proofs/tally.json",
+    "claim-one:optimism-sepolia": "hardhat claimOne --network optimism_sepolia --tally-file ./proofs/tally.json"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-ethers": "^3.0.8",

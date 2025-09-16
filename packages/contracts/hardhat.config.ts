@@ -25,6 +25,7 @@ import "./tasks/runner/initPoll";
 import "./tasks/runner/merge";
 import "./tasks/runner/prove";
 import "./tasks/runner/submitOnChain";
+import "./tasks/runner/claimOne";
 
 dotenv.config();
 

@@ -1,7 +1,7 @@
 {
   "network": "optimism-sepolia",
-  "maciContractAddress": "0xE048c0fcE9f749443c86D865dB1598d51379B640",
-  "maciContractStartBlock": 33067275,
-  "registryManagerContractAddress": "0x15807BD53B5e55ac90BEB1b746141D51e72a8fFB",
-  "registryManagerContractStartBlock": 33067284
+  "maciContractAddress": "0x8f7c908bdaCFAB22A28e2B495816D90c65E43018",
+  "maciContractStartBlock": 33103386,
+  "registryManagerContractAddress": "0x62684f693a0ab66fC2833687344Aa07F080E4ebB",
+  "registryManagerContractStartBlock": 33103393
 }
